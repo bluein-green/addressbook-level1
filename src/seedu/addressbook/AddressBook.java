@@ -115,6 +115,11 @@ public class AddressBook {
     private static final String COMMAND_LIST_DESC = "Displays all persons as a list with index numbers.";
     private static final String COMMAND_LIST_EXAMPLE = COMMAND_LIST_WORD;
 
+    private static final String COMMAND_SORT_LIST_WORD = "sort";
+    private static final String COMMAND_SORT_LIST_DESC = "Displays all persons, sorted by name, "
+                                                    + "as a list with index numbers.";
+    private static final String COMMAND_SORT_LIST_EXAMPLE = COMMAND_LIST_WORD;
+
     private static final String COMMAND_DELETE_WORD = "delete";
     private static final String COMMAND_DELETE_DESC = "Deletes a person identified by the index number used in "
                                                     + "the last find/list call.";
@@ -375,6 +380,8 @@ public class AddressBook {
             return executeFindPersons(commandArgs);
         case COMMAND_LIST_WORD:
             return executeListAllPersonsInAddressBook();
+        case COMMAND_SORT_LIST_WORD:
+            return executeSortAllPersonsInAddressBook();
         case COMMAND_DELETE_WORD:
             return executeDeletePerson(commandArgs);
         case COMMAND_CLEAR_WORD:
@@ -577,6 +584,18 @@ public class AddressBook {
         ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
         showToUser(toBeDisplayed);
         return getMessageForPersonsDisplayedSummary(toBeDisplayed);
+    }
+
+    /**
+     * Displays all persons in the address book to the user; in sorted (by name) order.
+     *
+     * @return feedback display message for the operation result
+     */
+    private static String executeSortAllPersonsInAddressBook() {
+        ArrayList<String[]> listOfPersons = new ArrayList<>(getAllPersonsInAddressBook());
+        Collections.sort(listOfPersons, (String[] p1, String[] p2) -> p1[0].compareTo(p2[0]));
+        showToUser(listOfPersons);
+        return getMessageForPersonsDisplayedSummary(listOfPersons);
     }
 
     /**
