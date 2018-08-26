@@ -118,7 +118,7 @@ public class AddressBook {
     private static final String COMMAND_SORT_LIST_WORD = "sort";
     private static final String COMMAND_SORT_LIST_DESC = "Displays all persons, sorted by name, "
                                                     + "as a list with index numbers.";
-    private static final String COMMAND_SORT_LIST_EXAMPLE = COMMAND_LIST_WORD;
+    private static final String COMMAND_SORT_LIST_EXAMPLE = COMMAND_SORT_LIST_WORD;
 
     private static final String COMMAND_DELETE_WORD = "delete";
     private static final String COMMAND_DELETE_DESC = "Deletes a person identified by the index number used in "
@@ -1104,6 +1104,7 @@ public class AddressBook {
         return getUsageInfoForAddCommand() + LS
                 + getUsageInfoForFindCommand() + LS
                 + getUsageInfoForViewCommand() + LS
+                + getUsageInfoForSortCommand() + LS
                 + getUsageInfoForDeleteCommand() + LS
                 + getUsageInfoForClearCommand() + LS
                 + getUsageInfoForExitCommand() + LS
@@ -1122,6 +1123,12 @@ public class AddressBook {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_FIND_WORD, COMMAND_FIND_DESC) + LS
                 + String.format(MESSAGE_COMMAND_HELP_PARAMETERS, COMMAND_FIND_PARAMETERS) + LS
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_FIND_EXAMPLE) + LS;
+    }
+
+    /** Returns the string for showing 'sort' command usage instruction */
+    private static String getUsageInfoForSortCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_SORT_LIST_WORD, COMMAND_SORT_LIST_DESC) + LS
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_SORT_LIST_EXAMPLE) + LS;
     }
 
     /** Returns the string for showing 'delete' command usage instruction */
